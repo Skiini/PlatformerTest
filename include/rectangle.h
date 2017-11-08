@@ -22,7 +22,8 @@ public:
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);
 	RectType GetRectType();
-	
+	void move(b2Vec2 speed);
+	void jump(b2Vec2 speed);
 private:
 	sf::RectangleShape rectShape;
 	sf::Vector2f centerPos;

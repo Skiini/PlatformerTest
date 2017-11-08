@@ -5,13 +5,21 @@ Rect::Rect(sf::Vector2f position,
 {
 	centerPos = position;
 	pixelSize = size;
-
-	
 }
 
 Rect::~Rect()
 {
 
+}
+
+void Rect::move(b2Vec2 speed)
+{
+	body->SetLinearVelocity(b2Vec2(speed.x,body->GetLinearVelocity().y));
+}
+
+void Rect::jump(b2Vec2 speed)
+{
+	body->SetLinearVelocity(b2Vec2(body->GetLinearVelocity().x,speed.y * -1));
 }
 
 void Rect::init(b2World& world, b2BodyType bodyType)
