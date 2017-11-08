@@ -1,6 +1,5 @@
 #include "utility.h"
 
-
 const float pixelPerMeter = 64.f;
 
 float pixel2meter(float pixel)
@@ -27,7 +26,6 @@ sf::Vector2f meter2pixel(b2Vec2 meters)
 
 void CheckRectType(Rect** playerCharaterPtr, Rect** groundPtr, void* userData)
 {
-
 	if (userData != nullptr)
 	{
 		Rect* testedRect = static_cast<Rect*>(userData);
@@ -43,9 +41,8 @@ void CheckRectType(Rect** playerCharaterPtr, Rect** groundPtr, void* userData)
 	}
 }
 
-void MyContactListener::BeginContact(b2Contact* contact) {
-
-
+void MyContactListener::BeginContact(b2Contact* contact) 
+{
 	Rect* playerCharacter = nullptr;
 	Rect* ground = nullptr;
 
@@ -57,13 +54,8 @@ void MyContactListener::BeginContact(b2Contact* contact) {
 	}
 }
 
-void MyContactListener::EndContact(b2Contact* contact) {
-
-
-
+void MyContactListener::EndContact(b2Contact* contact) 
+{
 	void* bodyUserData = contact->GetFixtureA()->GetBody()->GetUserData();
-
 	bodyUserData = contact->GetFixtureB()->GetBody()->GetUserData();
-
-
 }

@@ -12,7 +12,6 @@ int main(int argc, const char* argv[])
 		"SFML Box2D Example");
 	window.setFramerateLimit(60.f);
 
-
 	b2World world = b2World(b2Vec2(0.f, 9.81f));
 	MyContactListener myContactListenerInstance;
 	world.SetContactListener(&myContactListenerInstance);
@@ -22,18 +21,19 @@ int main(int argc, const char* argv[])
 	Rect player;
 	Rect ground(sf::Vector2f(400.f, 600.f), sf::Vector2f(800.f, 100.f));
 	Rect wallTop(sf::Vector2f(400.f, 0.f), sf::Vector2f(800.f, 100.f));
-	Rect wallLeft(sf::Vector2f(0.f, 0.f), sf::Vector2f(800.f, 100.f));
+	Rect wallLeft(sf::Vector2f(0.f, 0.f), sf::Vector2f(100.f, 1200.f));
+	Rect wallRight(sf::Vector2f(800.f, 0.f), sf::Vector2f(100.f, 1200.f));
 	player.init(world, b2_dynamicBody);
 	ground.init(world, b2_staticBody);
 	wallTop.init(world, b2_staticBody);
 	wallLeft.init(world, b2_staticBody);
+	wallRight.init(world, b2_staticBody);
 
 	InputManager input;
 
 	float32 timeStep = 1 / 60.f;      //the length of time passed to simulate (seconds)
 	int32 velocityIterations = 8;   //how strongly to correct velocity
 	int32 positionIterations = 3;   //how strongly to correct position
-
 	
 	// run the program as long as the window is open
 	while (window.isOpen())
@@ -57,9 +57,9 @@ int main(int argc, const char* argv[])
 		ground.draw(window);
 		wallTop.draw(window);
 		wallLeft.draw(window);
+		wallRight.draw(window);
 		window.display();
 	}
-
 
 #if WIN32
 	system("pause");

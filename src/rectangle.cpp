@@ -9,7 +9,6 @@ Rect::Rect(sf::Vector2f position,
 
 Rect::~Rect()
 {
-
 }
 
 void Rect::move(b2Vec2 speed)
